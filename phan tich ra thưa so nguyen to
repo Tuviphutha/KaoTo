@@ -1,0 +1,77 @@
+#include <iostream>
+#include <stdio.h>
+#include <math.h>
+using namespace std;
+long n,i,a[100],b[100];
+long ktnt (long n)
+{
+    long d=1;
+    long dem=0;
+    if (n<2) d=0;
+    for (long i=2;i<=sqrt(n);i++)
+    {
+        if (n%i==0) dem++;
+    }
+    if (dem==0) d=1; else d=0;
+    return d;
+
+}
+int main()
+{
+    freopen("phantichrathuasonguyento.inp","r",stdin);
+    freopen("phantichrathuasonguyento.out","w",stdout);
+    long j=0,c=0;
+cin>>n;
+long m=n,dem=0;
+for (long i=2;i<=m;i++)
+{
+     if (ktnt(i)==1);
+    {
+        while (n%i==0)
+        {
+            j++;
+            //cout<<i<<endl;
+            a[j]=i;
+            n=n/i;
+            dem++;
+            //cout<<dem<<endl;
+        }
+        if (dem!=0)
+        {
+           c++;
+           b[c]=dem;
+        }
+    }
+    dem=0;
+    if (n==1) break;
+}
+cout<<"co so:"<<" ";
+//cout<<c<<endl;
+for (i=1;i<=j;i++)
+{
+    for (long x=0;x<i;x++)
+    {
+        if (a[i]==a[x])
+        {
+            for (long k=i;k<=j;k++)
+            {
+                a[k]=a[k+1];
+                j--;
+                i--;
+            }
+        }
+    }
+}
+for (long o=1;o<=j;o++)
+{
+ cout<<a[o]<<" ";
+}
+cout<<endl;
+cout<<"so mu:"<<" ";
+for (long o=1;o<=c;o++)
+{
+ //if (b[o]!=0)
+    cout<<b[o]<<" ";
+}
+    return 0;
+}
